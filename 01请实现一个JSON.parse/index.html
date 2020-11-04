@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //方法一
+        // function parse(jsonStr) {
+        //     return eval("(" + jsonStr + ")");
+        // }
+
+        //方法二
+        function parse(jsonStr) {
+            return new Function("return" + jsonStr);
+        }
+        
+        var jsonStr = '{"age":20,"name":"jack"}';
+        console.log(parse(jsonStr));
+    </script>
+</body>
+</html>
