@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [12, 3, 5, 90, 26, 85, 46];
+
+        //快速排序
+        function quickSort(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            //保存中间的数组
+            let midIndex = Math.floor(arr.length / 2);
+            //取出中间的值，剩下的内容进行循环比较
+            let midArr = arr.splice(midIndex, 1);
+            let midVal = midArr[0];
+            const left = [];
+            const right = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] <= midVal) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+
+            return quickSort(left).concat(midVal, quickSort(right));
+        }
+
+        // console.log(quickSort(arr));  //[3, 5, 12, 26, 46, 85, 90]
+
+
+        //冒泡排序
+        function bubbleSort(arr) {
+            var len = arr.length;
+            for(let i=0; i<len; i++) {
+                for(let j=0; j<len-1; j++) {
+                    if(arr[j] > arr[j+1]) {
+                        var temp = arr[j+1];
+                        arr[j+1] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        // console.log(bubbleSort(arr));  //[3, 5, 12, 26, 46, 85, 90]
+
+        
+        //选择排序
+        function selectSort(arr) {
+            var len = arr.length;
+            var minIndex, temp;
+            for(var i=0; i<len-1; i++) {
+                minIndex = i;
+                for(var j=i+1; j<len; j++) {
+                    if(arr[j] < arr[minIndex]) {
+                        minIndex = j;
+                    }
+                }
+                temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+             
+            return arr;
+        }
+
+        console.log(selectSort(arr));  //[3, 5, 12, 26, 46, 85, 90]
+
+    </script>
+</body>
+
+</html>
