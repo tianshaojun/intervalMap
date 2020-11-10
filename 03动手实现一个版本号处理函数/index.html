@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var versions = ['1.45.0','1.5','6','3.3.3.3.3.3.3'];
+        var versions = ['1.45.0', '1.5', '6', '3.3.3.3.3.3.3'];
 
         function sortVersion(list) {
-            return list.sort((a,b) => {
+            return list.sort((a, b) => {
                 let aa = a.split('.');
                 let bb = b.split('.');
                 let length = aa.length > bb.length ? aa.length : bb.length;
-                for(var i=0; i<length; i++) {
+                for (var i = 0; i < length; i++) {
                     let x = aa[i] || 0;
                     let y = bb[i] || 0;
-                    if(x-y !== 0) return x-y;
+                    if (x - y !== 0) return x - y;
                 }
             });
         }
 
-        console.log(sortVersion(versions));
+        console.log(sortVersion(versions));  //["1.5", "1.45.0", "3.3.3.3.3.3.3", "6"]
     </script>
 </body>
+
 </html>
