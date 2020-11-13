@@ -1,3 +1,4 @@
+
 1.怎么理解to B 和 to C的业务
 2. var myname = '前端';
    function showName() {
@@ -8,4 +9,5 @@
      console.log(myname);
    }
    showName();  //undefined undefined
+
 
