@@ -1,0 +1,11 @@
+1.怎么理解to B 和 to C的业务
+2. var myname = '前端';
+   function showName() {
+     console.log(myname);
+     if (0) {
+       var myname = '后端';
+     }
+     console.log(myname);
+   }
+   showName();  //undefined undefined
+
