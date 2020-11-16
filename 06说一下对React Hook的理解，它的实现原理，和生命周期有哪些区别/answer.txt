@@ -1,0 +1,22 @@
+1.谈谈对react hook的理解
+2.想通过 updateInfo 来更新 userInfo 里面的数据信息，但是这段代码存在一些问题，你能修复这段代码吗？
+let userInfo = {
+    name: "小明",
+    age: 23,
+    sex: '男',
+    updateInfo: function () {
+      //模拟xmlhttprequest请求延时
+      setTimeout(function () {
+        this.name = '小王'
+        this.age = 30
+        this.sex = '女'
+      }, 100)
+    }
+}
+
+userInfo.updateInfo();
+
+(1). 箭头函数 
+(2). 缓存上下文(self、自执行函数) 
+(3). 显示绑定上下文(call, apply, bind) 
+(4). setTimeout第三个参数传入(其实也相当于缓存了上下文)
