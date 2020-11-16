@@ -21,3 +21,5 @@ userInfo.updateInfo();
 (2). 缓存上下文(self、自执行函数) 
 (3). 显示绑定上下文(call, apply, bind) 
 (4). setTimeout第三个参数传入(其实也相当于缓存了上下文)
+
+
