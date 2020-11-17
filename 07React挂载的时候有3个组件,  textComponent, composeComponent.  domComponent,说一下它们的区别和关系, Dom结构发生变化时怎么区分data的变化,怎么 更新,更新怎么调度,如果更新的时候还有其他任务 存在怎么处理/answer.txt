@@ -1,4 +1,3 @@
 
 1.React挂载的时候有3个组件,textComponent, composeComponent、domComponent,说一下它们的区别和关系,Dom结构发生变化时怎么区分data的变化,怎么更新,更新怎么调度,如果更新的时候还有其他任务存在怎么处理
 
-
