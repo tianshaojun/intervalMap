@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const resolved = Promise.resolve(42);
+        const rejected = Promise.reject(-1);
+
+        const allSelectedPromise = Promise.allSettled([resolved, rejected]);
+
+        allSelectedPromise.then(function (results) {
+            console.log(results);
+        })
+
+        // [{ status: "fulfilled", value: 42 },
+        // { status: "rejected", reason: -1 }]
+
+    </script>
+</body>
+
+</html>
