@@ -2,3 +2,4 @@
 function lottery(whiteList, participant) {
     //your code
 }
+
