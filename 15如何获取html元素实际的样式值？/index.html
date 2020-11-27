@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #myDiv {
+            background-color: blue;
+            width: 100px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myDiv" style="background-color:red;border:1px solid black;"></div>
+</body>
+<script>
+    let myDiv = document.getElementById("myDiv");
+    let computedStyle = document.defaultView.getComputedStyle(myDiv, null);
+
+    // console.log(computedStyle.backgroundColor);
+    // console.log(computedStyle.width);
+    // console.log(computedStyle.height);
+    // console.log(computedStyle.border);
+
+    // 兼容写法
+    function getStyleByAttr(obj, name) {
+        return window.getComputedStyle ? window.getComputedStyle(obj, null)[name] : obj.currentStyle[name];
+    }
+    let node = document.getElementById('myDiv');
+    console.log(getStyleByAttr(node, "backgroundColor"));
+    console.log(getStyleByAttr(node, "width"));
+    console.log(getStyleByAttr(node, "height"));
+    console.log(getStyleByAttr(node, "border"));
+</script>
+
+</html>
