@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="outer1">
+        <p id="demo1"></p>
+    </div>
+    <div id="outer2">
+        <p id="demo2"></p>
+    </div>
+</body>
+<script>
+    //方式一: 递归
+    function containDom(a, b) {
+        const domA = typeof a === "string" ? document.querySelector(a) : a;
+        const domB = typeof b === "string" ? document.querySelector(b) : b;
+        const children = domA.children;
+        let containB = false;
+        for (let i = 0; i < children.length; i++) {
+            if (children[i].children.length > 0) {
+                containB = containDom(children[i], b);
+            } else {
+                if (children[i] === domB) {
+                    containB = true;
+                }
+            }
+            if (containB) break;
+        }
+        return containB;
+    }
+    // console.log(containDom("#outer1", "#demo1"));  //true
+    // console.log(containDom("#outer1", "#demo2"));  //false
+
+
+    //方式二: ES6语法
+    function containDom(a, b) {
+        const domA = typeof a === "string" ? document.querySelector(a) : a;
+        const domB = typeof b === "string" ? document.querySelector(b) : b;
+        const children = Array.from(domA.children);
+        return children.some((child) =>
+            child.children.length > 0 ? containDom(child, b) : child === domB
+        );
+    }
+    // console.log(containDom("#outer1", "#demo1"));  //true
+    // console.log(containDom("#outer1", "#demo2"));  //false
+
+
+    //方式三: 反过来查parentNode
+    function isChildOf(parent, child) {
+        var parentNode;
+        if (child && parent) {
+            parentNode = child.parentNode;
+            while (parentNode) {
+                if (parent === parentNode) {
+                    return true;
+                }
+                parentNode = parentNode.parentNode;
+            }
+        }
+        return false;
+    }
+    var parentNode1 = document.querySelector("#outer1");
+    childNode1 = document.querySelector("#demo1");
+    childNode2 = document.querySelector("#demo2");
+    console.log(isChildOf(parentNode1, childNode1));  //true
+    console.log(isChildOf(parentNode1, childNode2));  //false
+</script>
+
+</html>
