@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //方式一
+        // function createImg(url) {
+        //     return new Promise((resolve, reject) => {
+        //         if (url) {
+        //             let ImgEle = document.createElement("img");
+        //             ImgEle.src = url;
+        //             resolve(ImgEle);
+        //         } else {
+        //             reject("url is not right");
+        //         }
+        //     });
+        // }
+
+        // createImg("https://newimg.jspang.com/honglangman_2.jpg").then((value) => {
+        //     document.body.appendChild(value);
+        // })
+
+
+        //方式二
+        // function createImg(url) {
+        //     return new Promise((resolve) => {
+        //         const img = new Image();
+        //         img.src = url;
+        //         setTimeout(() => {
+        //             resolve(img);
+        //         }, 1000);
+        //     });
+        // }
+
+        // createImg("1.jpg").then(function (value) {
+        //     document.body.appendChild(value);
+        //     return createImg("2.jpg");
+        // }).then(function (value) {
+        //     document.body.appendChild(value);
+        //     return createImg("3.jpg");
+        // }).then(function (value) {
+        //     document.body.appendChild(value);
+        // })
+
+
+        //方式二优化
+        function createImg(url, delay) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = url;
+                setTimeout(() => {
+                    document.body.appendChild(img);
+                    resolve();
+                }, delay);
+            });
+        }
+
+        createImg("1.jpg", 1000).then(function () {
+            return createImg("2.jpg", 2000);
+        }).then(function () {
+            return createImg("3.jpg", 3000);
+        }).then(function () {});
+    </script>
+</body>
+
+</html>
