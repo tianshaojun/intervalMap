@@ -1,0 +1,1 @@
+1.Vue-router history 模式部署的时候要注意什么？server端用nginx和node时候分别怎么处理？
