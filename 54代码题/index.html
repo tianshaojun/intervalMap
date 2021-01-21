@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多种方式实现圆形可点击区域</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #circle {
+            background: red;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        img {
+            border: 1px solid red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 方式一 -->
+    <div id="circle"></div>
+
+    <!-- 方式二 -->
+    <img src="./1.png" usemap="#Map" />
+    <map name="Map" id="Map">
+        <area shape="circle" coords="50,50,50" href="https://www.yidengxuetang.com/" rel="external nofollow"
+            target="_blank" />
+    </map>
+</body>
+<script>
+    document.querySelector("#circle").onclick = function () {
+        console.log("ok");
+    }
+
+    //方式三
+    document.onclick = function (e) {
+        let [x, y, r] = [50, 250, 50],  //x,y坐标原点,r半径
+            x1 = e.clientX,  //获取x坐标
+            y1 = e.clientY,  //获取y坐标
+            dis = Math.abs((Math.sqrt(Math.pow(x - x1, 2) + Math.pow(y - y1, 2))));
+        if (dis < r) {
+            console.log('ok');
+        }
+    }
+
+    //方式四 canvas实现
+</script>
+
+</html>
