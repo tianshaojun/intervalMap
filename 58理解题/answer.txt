@@ -1,4 +1,3 @@
 
 1.Token一般是存放在哪里？Token放在cookie和放在localStorage、sessionStorage中有什么不同？
 
-
