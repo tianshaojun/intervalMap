@@ -1,0 +1,3 @@
+
+1.Vuex的action和mutation的特性是什么？有什么区别？Vuex怎么知道state是通过mutation修改还是外部直接修改的？
+
